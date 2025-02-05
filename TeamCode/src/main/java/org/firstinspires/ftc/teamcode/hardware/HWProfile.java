@@ -23,7 +23,7 @@ public class HWProfile {
     public Servo    intakeRotate2    = null;
     public Servo    servoClaw        = null;
     public IMU      imu              = null;
-    public GoBildaPinpointDriver pinpoint = null; // Declare OpMode member for the Odometry Computer
+    public GoBildaPinpointDriverRR pinpoint = null; // Declare OpMode member for the Odometry Computer
     public Servo    poleToucherServo = null;
 
 
@@ -145,7 +145,7 @@ public class HWProfile {
                     RevHubOrientationOnRobot.UsbFacingDirection.LEFT));
             // Without this, the REV Hub's orientation is assumed to be logo up / USB forward
             imu.initialize(parameters);
-            pinpoint = hwMap.get(GoBildaPinpointDriver.class,"pinpoint");
+            pinpoint = hwMap.get(GoBildaPinpointDriverRR.class,"pinpoint");
             pinpoint.resetPosAndIMU();
 
 

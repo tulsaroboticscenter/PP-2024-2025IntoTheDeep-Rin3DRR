@@ -62,7 +62,7 @@ import java.util.Locale;
 
 
 /** @noinspection ALL*/
-@TeleOp(name="goBILDA Robot in 3 Days", group="Robot")
+@TeleOp(name="goBILDA Rin3D", group="Robot")
 //@Disabled
 public class GoBildaRi3D2425 extends LinearOpMode {
 
@@ -104,8 +104,8 @@ public class GoBildaRi3D2425 extends LinearOpMode {
         telemetry.addData("Status:", "Initialized");
         telemetry.update();
 
-        robot.extendMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.elbowMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        robot.extendMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        robot.elbowMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         /* Send telemetry message to signify robot waiting */
@@ -185,8 +185,8 @@ public class GoBildaRi3D2425 extends LinearOpMode {
             robot.leftBackDrive.setPower(backLeftPower);
             robot.rightFrontDrive.setPower(frontRightPower);
             robot.rightBackDrive.setPower(backRightPower);
-            robot.elbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.extendMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            robot.elbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            robot.extendMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
             /* Here we handle the three buttons that have direct control of the intake speed.
@@ -381,11 +381,12 @@ public class GoBildaRi3D2425 extends LinearOpMode {
                 extensionPosition = robot.EXTENSION_SCORING_IN_HIGH_BASKET;
             }
 
+            robot.elbowMotor.setPower(1);
+            robot.extendMotor.setPower(1);
+
             robot.elbowMotor.setTargetPosition((int) elbowPosition);
             robot.extendMotor.setTargetPosition((int) extensionPosition);
 
-            robot.elbowMotor.setPower(1);
-            robot.extendMotor.setPower(1);
 
 
             /* Check to see if our arm is over the current limit, and report via telemetry. */
@@ -457,7 +458,7 @@ public class GoBildaRi3D2425 extends LinearOpMode {
             //telemetry.addData("arm Target Position: ", robot.armMotor.getTargetPosition());
             //telemetry.addData("arm Encoder: ", robot.armMotor.getCurrentPosition());
             telemetry.addData("rightStick: ", -gamepad2.right_stick_y);
-            telemetry.addData("lift variable", extensionPosition);
+            telemetry.addData("Extension variable", extensionPosition);
             telemetry.addData("Lift Target Position",robot.extendMotor.getTargetPosition());
             telemetry.addData("lift current position", robot.extendMotor.getCurrentPosition());
             telemetry.addData("liftMotor Current:",((DcMotorEx) robot.extendMotor).getCurrent(CurrentUnit.AMPS));
